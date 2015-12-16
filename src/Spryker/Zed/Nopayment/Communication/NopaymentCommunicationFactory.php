@@ -10,7 +10,7 @@ use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
 use Spryker\Zed\Nopayment\Persistence\NopaymentQueryContainer;
 use Spryker\Zed\Nopayment\Business\NopaymentFacade;
 
-class NopaymentDependencyContainer extends AbstractCommunicationFactory
+class NopaymentCommunicationFactory extends AbstractCommunicationFactory
 {
 
     /**
