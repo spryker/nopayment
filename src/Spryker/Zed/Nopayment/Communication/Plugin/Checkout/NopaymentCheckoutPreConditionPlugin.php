@@ -7,26 +7,23 @@
 
 namespace Spryker\Zed\Nopayment\Communication\Plugin\Checkout;
 
-use Generated\Shared\Transfer\CheckoutErrorTransfer;
 use Generated\Shared\Transfer\CheckoutResponseTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
+use Spryker\Zed\CheckoutExtension\Dependency\Plugin\CheckoutPreConditionPluginInterface;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
-use Spryker\Zed\Payment\Dependency\Plugin\Checkout\CheckoutPreCheckPluginInterface;
 
 /**
- * @deprecated Use {@link \Spryker\Zed\Nopayment\Communication\Plugin\Checkout\NopaymentCheckoutPreConditionPlugin} instead.
- *
  * @method \Spryker\Zed\Nopayment\Business\NopaymentFacadeInterface getFacade()
  * @method \Spryker\Zed\Nopayment\Communication\NopaymentCommunicationFactory getFactory()
  * @method \Spryker\Zed\Nopayment\NopaymentConfig getConfig()
  * @method \Spryker\Zed\Nopayment\Persistence\NopaymentQueryContainerInterface getQueryContainer()
  */
-class NopaymentPreCheckPlugin extends AbstractPlugin implements CheckoutPreCheckPluginInterface
+class NopaymentCheckoutPreConditionPlugin extends AbstractPlugin implements CheckoutPreConditionPluginInterface
 {
-    public const ERROR_CODE_NOPAYMENT_NOT_ALLOWED = 403;
-
     /**
      * {@inheritDoc}
+     * - Returns true if there is no Nopayment payment provider in QuoteTransfer.payments otherwise does additional checks/logic.
+     * - Returns true if QuoteTransfer.totals.priceToPay greater than 0 otherwise adds an error into CheckoutResponseTransfer and returns false.
      *
      * @api
      *
@@ -35,19 +32,8 @@ class NopaymentPreCheckPlugin extends AbstractPlugin implements CheckoutPreCheck
      *
      * @return bool
      */
-    public function execute(
-        QuoteTransfer $quoteTransfer,
-        CheckoutResponseTransfer $checkoutResponseTransfer
-    ) {
-        if ($quoteTransfer->getTotals()->getPriceToPay() > 0) {
-            $error = new CheckoutErrorTransfer();
-            $error->setMessage('Nopayment is only available if the price to pay is 0');
-            $error->setErrorCode(self::ERROR_CODE_NOPAYMENT_NOT_ALLOWED);
-            $checkoutResponseTransfer->addError($error);
-
-            return false;
-        }
-
-        return true;
+    public function checkCondition(QuoteTransfer $quoteTransfer, CheckoutResponseTransfer $checkoutResponseTransfer)
+    {
+        return $this->getFacade()->checkOrderPreSaveConditions($quoteTransfer, $checkoutResponseTransfer);
     }
 }
