@@ -10,7 +10,7 @@ namespace Spryker\Zed\Nopayment\Persistence;
 interface NopaymentEntityManagerInterface
 {
     /**
-     * @param list<int> $salesOrderItemIds
+     * @param array<int> $salesOrderItemIds
      *
      * @return void
      */
