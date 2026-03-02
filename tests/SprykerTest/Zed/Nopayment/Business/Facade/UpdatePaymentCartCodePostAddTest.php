@@ -40,9 +40,6 @@ class UpdatePaymentCartCodePostAddTest extends Unit
      */
     protected NopaymentBusinessTester $tester;
 
-    /**
-     * @return void
-     */
     public function testShouldUpdatePaymentInQuoteWhileIsFullyPaid(): void
     {
         // Arrange
@@ -77,9 +74,6 @@ class UpdatePaymentCartCodePostAddTest extends Unit
         $this->assertSame(0, $paymentTransfer->getAmount());
     }
 
-    /**
-     * @return void
-     */
     public function testShouldNotUpdatePaymentInQuoteWhileIsNotFullyPaid(): void
     {
         // Arrange

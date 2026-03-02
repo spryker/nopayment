@@ -60,9 +60,6 @@ class NopaymentFacadeTest extends Unit
      */
     protected $nopaymentFacade;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -81,9 +78,6 @@ class NopaymentFacadeTest extends Unit
         $this->nopaymentFacade->setFactory($factory);
     }
 
-    /**
-     * @return void
-     */
     public function testSetAsPaidNopaymentPaidEntityShouldBeCreated(): void
     {
         // Arrange
@@ -101,9 +95,6 @@ class NopaymentFacadeTest extends Unit
         $this->tester->assertNopaymentPaidWereCreated($salesOrderItemEntities[0]->getIdSalesOrderItem());
     }
 
-    /**
-     * @return void
-     */
     public function testIsPaidExpectedTrue(): void
     {
         // Arrange
@@ -118,9 +109,6 @@ class NopaymentFacadeTest extends Unit
         $this->assertTrue($isPaidResult);
     }
 
-    /**
-     * @return void
-     */
     public function testIsPaidExpectedFalse(): void
     {
         // Arrange
@@ -159,9 +147,6 @@ class NopaymentFacadeTest extends Unit
         $this->assertEquals($expectedPaymentMethodsCount, $paymentMethodsTransfer->getMethods()->count());
     }
 
-    /**
-     * @return void
-     */
     public function testCheckOrderPreSaveConditionsResponseShouldHaveError(): void
     {
         // Arrange
@@ -183,9 +168,6 @@ class NopaymentFacadeTest extends Unit
         $this->assertEquals(403, $checkoutResponseTransfer->getErrors()[0]->getErrorCode());
     }
 
-    /**
-     * @return void
-     */
     public function testCheckOrderPreSaveConditionsResponseShouldNotHaveError(): void
     {
         // Arrange
@@ -214,9 +196,6 @@ class NopaymentFacadeTest extends Unit
         ];
     }
 
-    /**
-     * @return \ArrayObject
-     */
     protected function getPredefinedPaymentMethods(): ArrayObject
     {
         $preDefinedPaymentMethodCollection = new ArrayObject();

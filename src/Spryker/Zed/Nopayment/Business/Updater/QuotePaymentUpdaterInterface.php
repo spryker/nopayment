@@ -12,10 +12,5 @@ use Generated\Shared\Transfer\CartCodeResponseTransfer;
 
 interface QuotePaymentUpdaterInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CartCodeRequestTransfer $cartCodeRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\CartCodeResponseTransfer
-     */
     public function update(CartCodeRequestTransfer $cartCodeRequestTransfer): CartCodeResponseTransfer;
 }

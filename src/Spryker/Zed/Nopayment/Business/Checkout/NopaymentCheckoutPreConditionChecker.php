@@ -40,11 +40,6 @@ class NopaymentCheckoutPreConditionChecker implements NopaymentCheckoutPreCondit
         return true;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
     protected function hasNopaymentPayments(QuoteTransfer $quoteTransfer): bool
     {
         foreach ($quoteTransfer->getPayments() as $payment) {

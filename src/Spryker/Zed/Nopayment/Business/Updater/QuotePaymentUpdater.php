@@ -15,11 +15,6 @@ use Spryker\Shared\Nopayment\NopaymentConfig;
 
 class QuotePaymentUpdater implements QuotePaymentUpdaterInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CartCodeRequestTransfer $cartCodeRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\CartCodeResponseTransfer
-     */
     public function update(CartCodeRequestTransfer $cartCodeRequestTransfer): CartCodeResponseTransfer
     {
         $quoteTransfer = $cartCodeRequestTransfer->getQuoteOrFail();
@@ -37,19 +32,11 @@ class QuotePaymentUpdater implements QuotePaymentUpdaterInterface
         return $cartCodeResponseTransfer->setQuote($quoteTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
     protected function isPaid(QuoteTransfer $quoteTransfer): bool
     {
         return $quoteTransfer->getTotals() && $quoteTransfer->getTotalsOrFail()->getPriceToPay() === 0;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\PaymentTransfer
-     */
     protected function createPaymentTransfer(): PaymentTransfer
     {
         return (new PaymentTransfer())

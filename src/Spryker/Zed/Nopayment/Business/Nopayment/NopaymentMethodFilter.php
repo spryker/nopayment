@@ -19,20 +19,11 @@ class NopaymentMethodFilter implements NopaymentMethodFilterInterface
      */
     protected $nopaymentConfig;
 
-    /**
-     * @param \Spryker\Zed\Nopayment\NopaymentConfig $nopaymentConfig
-     */
     public function __construct(NopaymentConfig $nopaymentConfig)
     {
         $this->nopaymentConfig = $nopaymentConfig;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PaymentMethodsTransfer $paymentMethodsTransfer
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\PaymentMethodsTransfer
-     */
     public function filterPaymentMethods(
         PaymentMethodsTransfer $paymentMethodsTransfer,
         QuoteTransfer $quoteTransfer

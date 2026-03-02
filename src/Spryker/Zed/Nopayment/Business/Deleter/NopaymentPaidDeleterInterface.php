@@ -12,11 +12,6 @@ use Generated\Shared\Transfer\NopaymentPaidCollectionResponseTransfer;
 
 interface NopaymentPaidDeleterInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\NopaymentPaidCollectionDeleteCriteriaTransfer $nopaymentPaidCollectionDeleteCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\NopaymentPaidCollectionResponseTransfer
-     */
     public function deleteNopaymentPaidCollection(
         NopaymentPaidCollectionDeleteCriteriaTransfer $nopaymentPaidCollectionDeleteCriteriaTransfer
     ): NopaymentPaidCollectionResponseTransfer;

@@ -13,18 +13,10 @@ use Spryker\Zed\Nopayment\Persistence\NopaymentEntityManagerInterface;
 
 class NopaymentPaidDeleter implements NopaymentPaidDeleterInterface
 {
-    /**
-     * @param \Spryker\Zed\Nopayment\Persistence\NopaymentEntityManagerInterface $nopaymentEntityManager
-     */
     public function __construct(protected NopaymentEntityManagerInterface $nopaymentEntityManager)
     {
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\NopaymentPaidCollectionDeleteCriteriaTransfer $nopaymentPaidCollectionDeleteCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\NopaymentPaidCollectionResponseTransfer
-     */
     public function deleteNopaymentPaidCollection(
         NopaymentPaidCollectionDeleteCriteriaTransfer $nopaymentPaidCollectionDeleteCriteriaTransfer
     ): NopaymentPaidCollectionResponseTransfer {

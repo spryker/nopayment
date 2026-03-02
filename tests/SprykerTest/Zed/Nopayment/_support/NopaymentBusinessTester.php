@@ -32,11 +32,6 @@ class NopaymentBusinessTester extends Actor
 {
     use _generated\NopaymentBusinessTesterActions;
 
-    /**
-     * @param int $idSalesOrderItem
-     *
-     * @return void
-     */
     public function haveNopaymentPaid(int $idSalesOrderItem): void
     {
         $paidItem = new SpyNopaymentPaid();
@@ -44,22 +39,12 @@ class NopaymentBusinessTester extends Actor
         $paidItem->save();
     }
 
-    /**
-     * @param int $idSalesOrderItem
-     *
-     * @return void
-     */
     public function assertNopaymentPaidWereCreated(int $idSalesOrderItem): void
     {
         $nopaymentPaids = SpyNopaymentPaidQuery::create()->findByFkSalesOrderItem($idSalesOrderItem);
         $this->assertCount(1, $nopaymentPaids);
     }
 
-    /**
-     * @param int $idSalesOrderItem
-     *
-     * @return \Orm\Zed\Nopayment\Persistence\SpyNopaymentPaid
-     */
     public function createNopaymentPaidEntity(int $idSalesOrderItem): SpyNopaymentPaid
     {
         $nopaymentPaidEntity = (new SpyNopaymentPaid())->setFkSalesOrderItem($idSalesOrderItem);
@@ -68,9 +53,6 @@ class NopaymentBusinessTester extends Actor
         return $nopaymentPaidEntity;
     }
 
-    /**
-     * @return void
-     */
     public function ensureNopaymentPaidTableIsEmpty(): void
     {
         $this->ensureDatabaseTableIsEmpty($this->getNopaymentPaidQuery());
@@ -84,9 +66,6 @@ class NopaymentBusinessTester extends Actor
         return $this->getNopaymentPaidQuery()->find();
     }
 
-    /**
-     * @return \Orm\Zed\Nopayment\Persistence\SpyNopaymentPaidQuery
-     */
     protected function getNopaymentPaidQuery(): SpyNopaymentPaidQuery
     {
         return SpyNopaymentPaidQuery::create();

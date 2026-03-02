@@ -34,9 +34,6 @@ class DeleteNopaymentPaidCollectionTest extends Unit
      */
     protected NopaymentBusinessTester $tester;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -45,9 +42,6 @@ class DeleteNopaymentPaidCollectionTest extends Unit
         $this->tester->ensureNopaymentPaidTableIsEmpty();
     }
 
-    /**
-     * @return void
-     */
     public function testDeletesNopaymentPaidEntitiesBySalesOrderItemIds(): void
     {
         // Arrange
@@ -69,9 +63,6 @@ class DeleteNopaymentPaidCollectionTest extends Unit
         $this->assertSame($nopaymentPaidEntity->getIdNopaymentPaid(), $nopaymentPaidEntities[0]->getIdNopaymentPaid());
     }
 
-    /**
-     * @return void
-     */
     public function testDoesNotDeleteNopaymentPaidEntitiesWhenNoEntitiesFoundBySalesOrderItemIds(): void
     {
         // Arrange
@@ -91,9 +82,6 @@ class DeleteNopaymentPaidCollectionTest extends Unit
         $this->assertSame($nopaymentPaidEntity->getIdNopaymentPaid(), $nopaymentPaidEntities[0]->getIdNopaymentPaid());
     }
 
-    /**
-     * @return void
-     */
     public function testDoesNotDeleteNopaymentPaidEntitiesWhenNoCriteriaConditionsAreSet(): void
     {
         // Arrange

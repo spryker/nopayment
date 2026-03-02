@@ -26,17 +26,11 @@ use Spryker\Zed\Nopayment\Business\Updater\QuotePaymentUpdaterInterface;
  */
 class NopaymentBusinessFactory extends AbstractBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\Nopayment\Business\Nopayment\NopaymentMethodFilterInterface
-     */
     public function createNopaymentMethodFilter(): NopaymentMethodFilterInterface
     {
         return new NopaymentMethodFilter($this->getConfig());
     }
 
-    /**
-     * @return \Spryker\Zed\Nopayment\Business\Nopayment\PaidInterface
-     */
     public function createNopaymentPaid(): PaidInterface
     {
         return new Paid(
@@ -44,25 +38,16 @@ class NopaymentBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Nopayment\Business\Checkout\NopaymentCheckoutPreConditionCheckerInterface
-     */
     public function createNopaymentCheckoutPreConditionChecker(): NopaymentCheckoutPreConditionCheckerInterface
     {
         return new NopaymentCheckoutPreConditionChecker();
     }
 
-    /**
-     * @return \Spryker\Zed\Nopayment\Business\Updater\QuotePaymentUpdaterInterface
-     */
     public function createQuotePaymentUpdater(): QuotePaymentUpdaterInterface
     {
         return new QuotePaymentUpdater();
     }
 
-    /**
-     * @return \Spryker\Zed\Nopayment\Business\Deleter\NopaymentPaidDeleterInterface
-     */
     public function createNopaymentPaidDeleter(): NopaymentPaidDeleterInterface
     {
         return new NopaymentPaidDeleter($this->getEntityManager());

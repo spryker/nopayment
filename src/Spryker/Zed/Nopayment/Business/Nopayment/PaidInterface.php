@@ -18,10 +18,5 @@ interface PaidInterface
      */
     public function setAsPaid(array $orderItems): array;
 
-    /**
-     * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem $orderItem
-     *
-     * @return bool
-     */
     public function isPaid(SpySalesOrderItem $orderItem): bool;
 }

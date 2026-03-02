@@ -18,19 +18,11 @@ class Paid implements PaidInterface
      */
     protected $queryContainer;
 
-    /**
-     * @param \Spryker\Zed\Nopayment\Persistence\NopaymentQueryContainerInterface $queryContainer
-     */
     public function __construct(NopaymentQueryContainerInterface $queryContainer)
     {
         $this->queryContainer = $queryContainer;
     }
 
-    /**
-     * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem $orderItem
-     *
-     * @return void
-     */
     protected function setOrderItemAsPaid(SpySalesOrderItem $orderItem): void
     {
         $paidItem = new SpyNopaymentPaid();
@@ -52,11 +44,6 @@ class Paid implements PaidInterface
         return $orderItems;
     }
 
-    /**
-     * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem $orderItem
-     *
-     * @return bool
-     */
     public function isPaid(SpySalesOrderItem $orderItem): bool
     {
         return ($this->queryContainer->queryOrderItem($orderItem)->count() > 0);
