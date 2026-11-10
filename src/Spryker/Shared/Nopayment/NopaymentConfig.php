@@ -7,9 +7,9 @@
 
 namespace Spryker\Shared\Nopayment;
 
-use Spryker\Shared\Kernel\AbstractBundleConfig;
+use Spryker\Shared\Kernel\AbstractSharedConfig;
 
-class NopaymentConfig extends AbstractBundleConfig
+class NopaymentConfig extends AbstractSharedConfig
 {
     /**
      * @api
